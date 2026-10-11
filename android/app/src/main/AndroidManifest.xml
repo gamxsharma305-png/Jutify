@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.gokadzev.musify">
+    package="com.gokadzev.jutify">
 
 
     <!-- Permissions -->
@@ -30,7 +30,7 @@
     </queries>
 
     <application
-        android:label="Musify"
+        android:label="Jutify"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
@@ -68,7 +68,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="musify"
+                    android:scheme="jutify"
                     android:host="playlist"
                     android:pathPattern="/custom/.*" />
             </intent-filter>
