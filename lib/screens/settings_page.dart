@@ -1,12 +1,12 @@
 /*
  *     Copyright (C) 2026 Valeri Gokadze
  *
- *     Musify is free software: you can redistribute it and/or modify
+ *     Jutify is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
  *
- *     Musify is distributed in the hope that it will be useful,
+ *     Jutify is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *     GNU General Public License for more details.
@@ -15,38 +15,38 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  *
- *     For more information about Musify, including how to contribute,
- *     please visit: https://github.com/gokadzev/Musify
+ *     For more information about Jutify, including how to contribute,
+ *     please visit: https://github.com/gamxsharma305-png/Jutify
  */
 
 import 'package:audio_service/audio_service.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:musify/constants/app_constants.dart';
-import 'package:musify/extensions/l10n.dart';
-import 'package:musify/main.dart';
-import 'package:musify/screens/search_page.dart';
-import 'package:musify/services/common_services.dart';
-import 'package:musify/services/data_manager.dart';
-import 'package:musify/services/listening_stats_service.dart';
-import 'package:musify/services/playlist_download_service.dart';
-import 'package:musify/services/playlists_manager.dart';
-import 'package:musify/services/router_service.dart';
-import 'package:musify/services/settings_manager.dart';
-import 'package:musify/services/update_manager.dart';
-import 'package:musify/theme/app_colors.dart';
-import 'package:musify/theme/app_themes.dart';
-import 'package:musify/utilities/flutter_bottom_sheet.dart';
-import 'package:musify/utilities/flutter_toast.dart';
-import 'package:musify/utilities/language_utils.dart';
-import 'package:musify/utilities/url_launcher.dart';
-import 'package:musify/widgets/bottom_sheet_bar.dart';
-import 'package:musify/widgets/confirmation_dialog.dart';
-import 'package:musify/widgets/custom_bar.dart';
-import 'package:musify/widgets/mini_player_bottom_space.dart';
-import 'package:musify/widgets/section_header.dart';
-import 'package:musify/widgets/shapes/four_sided_cookie_shape.dart';
+import 'package:jutify/constants/app_constants.dart';
+import 'package:jutify/extensions/l10n.dart';
+import 'package:jutify/main.dart';
+import 'package:jutify/screens/search_page.dart';
+import 'package:jutify/services/common_services.dart';
+import 'package:jutify/services/data_manager.dart';
+import 'package:jutify/services/listening_stats_service.dart';
+import 'package:jutify/services/playlist_download_service.dart';
+import 'package:jutify/services/playlists_manager.dart';
+import 'package:jutify/services/router_service.dart';
+import 'package:jutify/services/settings_manager.dart';
+import 'package:jutify/services/update_manager.dart';
+import 'package:jutify/theme/app_colors.dart';
+import 'package:jutify/theme/app_themes.dart';
+import 'package:jutify/utilities/flutter_bottom_sheet.dart';
+import 'package:jutify/utilities/flutter_toast.dart';
+import 'package:jutify/utilities/language_utils.dart';
+import 'package:jutify/utilities/url_launcher.dart';
+import 'package:jutify/widgets/bottom_sheet_bar.dart';
+import 'package:jutify/widgets/confirmation_dialog.dart';
+import 'package:jutify/widgets/custom_bar.dart';
+import 'package:jutify/widgets/mini_player_bottom_space.dart';
+import 'package:jutify/widgets/section_header.dart';
+import 'package:jutify/widgets/shapes/four_sided_cookie_shape.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -398,7 +398,7 @@ class SettingsPage extends StatelessWidget {
                 themeMode = getThemeMode(themeModeSetting);
                 brightness = getBrightnessFromThemeMode(themeMode);
                 if (context.mounted) {
-                  await Musify.updateAppState(
+                  await Jutify.updateAppState(
                     context,
                     newThemeMode: themeMode,
                     newLocale: languageSetting,
@@ -555,7 +555,7 @@ class SettingsPage extends StatelessWidget {
                   'accentColor',
                   color.toARGB32(),
                 );
-                Musify.updateAppState(
+                Jutify.updateAppState(
                   context,
                   newAccentColor: color,
                   useSystemColor: false,
@@ -616,7 +616,7 @@ class SettingsPage extends StatelessWidget {
             modeNames[mode.index],
             () {
               addOrUpdateData<int>('settings', 'themeIndex', mode.index);
-              Musify.updateAppState(context, newThemeMode: mode);
+              Jutify.updateAppState(context, newThemeMode: mode);
               Navigator.pop(context);
             },
             themeMode == mode,
@@ -655,7 +655,7 @@ class SettingsPage extends StatelessWidget {
               'languageCode',
               newLocaleFullCode,
             );
-            Musify.updateAppState(context, newLocale: newLocale);
+            Jutify.updateAppState(context, newLocale: newLocale);
             showToast(context, context.l10n!.languageMsg);
             Navigator.pop(context);
           }, activeLanguageFullCode == newLocaleFullCode);
@@ -706,7 +706,7 @@ class SettingsPage extends StatelessWidget {
   void _toggleSystemColor(BuildContext context, bool value) {
     addOrUpdateData<bool>('settings', 'useSystemColor', value);
     useSystemColor.value = value;
-    Musify.updateAppState(
+    Jutify.updateAppState(
       context,
       newAccentColor: primaryColorSetting,
       useSystemColor: value,
@@ -717,7 +717,7 @@ class SettingsPage extends StatelessWidget {
   void _togglePureBlack(BuildContext context, bool value) {
     addOrUpdateData<bool>('settings', 'usePureBlackColor', value);
     usePureBlackColor.value = value;
-    Musify.updateAppState(context);
+    Jutify.updateAppState(context);
     showToast(context, context.l10n!.settingChangedMsg);
   }
 
