@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:musify/utilities/media_duration.dart';
+import 'package:jutify/utilities/media_duration.dart';
 
 void main() {
   group('readMediaDuration', () {

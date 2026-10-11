@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:musify/services/listening_stats_service.dart';
-import 'package:musify/services/settings_manager.dart';
-import 'package:musify/utilities/listening_stats_utils.dart';
+import 'package:jutify/services/listening_stats_service.dart';
+import 'package:jutify/services/settings_manager.dart';
+import 'package:jutify/utilities/listening_stats_utils.dart';
 
-/// Regression test for gokadzev/Musify#953: after the last song in the queue
+/// Regression test for gamxsharma305-png/Jutify#953: after the last song in the queue
 /// completes, just_audio keeps `playing == true`, and the resulting
 /// `PlayerState(playing: true, completed)` event must not start a new
 /// listening session that keeps counting idle wall-clock time.
@@ -16,7 +16,7 @@ void main() {
   final song = {'ytid': 'aaa', 'title': 'A', 'artist': 'x', 'duration': 5};
 
   setUpAll(() async {
-    dir = await Directory.systemTemp.createTemp('musify_stats_test');
+    dir = await Directory.systemTemp.createTemp('jutify_stats_test');
     Hive.init(dir.path);
     await Hive.openBox('settings');
     await Hive.openBox('user');
